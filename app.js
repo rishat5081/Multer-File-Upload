@@ -3,9 +3,7 @@ const express = require('express'),
     multer = require('multer'),
     path = require('path'),
     bodyParser = require('body-parser'),
-    fs = require('file-system'),
-    fss = require('fs'),
-    bcrypt = require('bcrypt')
+    fss = require('fs')
 
 var port = process.env.PORT || 1111
 
