@@ -7,7 +7,7 @@ const express = require('express'),
     fss = require('fs'),
     bcrypt = require('bcrypt')
 
-var userName = 'saaaad'
+var port = process.env.PORT || 1111
 
 app.use(express.urlencoded({
     extended: true
@@ -15,18 +15,7 @@ app.use(express.urlencoded({
 app.use(bodyParser.json())
 app.set('view engine', 'ejs')
 app.use(express.static('./public'))
-//fss.renameSync('public/pic/saad.png','public/pic/userpic-1572516779307.png')
 
-
-
-// const mstorage = multer.diskStorage(
-//     {
-//         destination: './public/pic/',
-//         filename: (req, file, cb) => {
-//             console.log(req.body)
-//             cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
-//         }
-//     })
 
 const upload_it = multer({
     storage: multer.diskStorage({
@@ -62,8 +51,6 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 
-
-
 app.post('/picUpload', (req, res) => {
     upload_it(req, res, (error) => {
         if (error)
@@ -81,6 +68,6 @@ app.post('/picUpload', (req, res) => {
     })
 })
 
-app.listen(1111, (req, res) => {
-    console.log('Server Started at port 1111')
+app.listen(port, (req, res) => {
+    console.log('Server Started at port' + port)
 })
